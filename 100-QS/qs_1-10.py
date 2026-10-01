@@ -45,7 +45,6 @@
 # +++++++++++++++++++++++++++++++++++++++++++++
 
 # Q-2 -: Palindrome Number -: Given an integer x, return true if x is a palindrome, and false otherwise. (without built-in use)
-
 # x = int(input())
 
 # if x < 0:
@@ -66,7 +65,6 @@
 
 
 # Using Built-in keyword
-
 # x = int(input())
 
 # if x < 0:
@@ -79,7 +77,7 @@
 #         print("False")
 
 
-# More Optimize one
+# Leetcode Optimize one
 # x = int(input())
 
 # if x < 0:
@@ -96,9 +94,9 @@
 # if x == reversed_half or x == reversed_half // 10:
 #     print("True")
 
+# ++++++++++++++++++++++++++++++++++++++++++++++
 
 # Q-3 -: Remove Duplicates from Sorted Array (Without using Built-in keyword)
-
 # n = int(input())
 
 # arr = []
@@ -119,18 +117,112 @@
 #         print(arr[i], end=" ")
 
 # Using Built-in keyword
+# n = int(input())
+
+# arr = []
+# for i in range(n):
+#     arr.append(int(input()))
+
+# unique = []
+# for i in range(n):
+#     if i == 0 or arr[i] != arr[i-1]:
+#         unique.append(arr[i])
+
+# print(len(unique))
+
+# for i in range(len(unique)):
+#     print(unique[i], end=" ")
+
+
+# Leetcode optimized one
 n = int(input())
 
 arr = []
 for i in range(n):
     arr.append(int(input()))
 
-unique = []
-for i in range(n):
-    if i == 0 or arr[i] != arr[i-1]:
-        unique.append(arr[i])
+k = 1
 
-print(len(unique))
+for i in range(1, len(arr)):
+    if arr[i] != arr[k-1]:
+        arr[k] = arr[i]
+        k += 1
 
-for i in range(len(unique)):
-    print(unique[i], end=" ")
+print(k)
+for i in range(k):
+    print(arr[i], end=" ")
+
+
+
+
+# Q-4  Remove Element
+
+# Without using built-in keyword
+# n = int(input())
+
+# arr = []
+# for i in range(n):
+#     arr.append(int(input()))
+
+# val = int(input())
+# k = 0
+
+# for i in range(n):
+#     if arr[i] != val:
+#         arr[k] = arr[i]
+#         k += 1
+
+# print(k)
+
+# for i in range(k):
+#     print(arr[i], end=" ")
+
+
+
+
+# Using built-in keyword
+# n = int(input())
+
+# arr = []
+# for i in range(n):
+#     arr.append(int(input()))
+
+# val = int(input())
+# k = 0
+
+# while k < len(arr):
+#     if arr[k] == val:
+#         arr.pop(k)
+#     else:
+#         k += 1
+
+# print(k)
+
+# for i in range(k):
+#     print(arr[i], end=" ")
+
+
+
+#  Leetcode optimized way
+# n = int(input())
+
+# arr = []
+# for i in range(n):
+#     arr.append(int(input()))
+
+# val = int(input())
+
+# left = 0
+# right = n - 1
+
+# while left <= right:
+#     if arr[left] == val:
+#         arr[left] = arr[right]
+#         right -= 1
+#     else:
+#         left += 1
+
+# print(left)
+
+# for i in range(left):
+#     print(arr[left], end=" ")
