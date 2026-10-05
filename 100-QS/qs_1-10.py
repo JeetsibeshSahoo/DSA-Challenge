@@ -1,4 +1,4 @@
-#  Two SUM (without built-in use)
+# Q-1 -: Two SUM (without built-in use)
 
 # n = int(input())
 
@@ -135,27 +135,27 @@
 
 
 # Leetcode optimized one
-n = int(input())
+# n = int(input())
 
-arr = []
-for i in range(n):
-    arr.append(int(input()))
+# arr = []
+# for i in range(n):
+#     arr.append(int(input()))
 
-k = 1
+# k = 1
 
-for i in range(1, len(arr)):
-    if arr[i] != arr[k-1]:
-        arr[k] = arr[i]
-        k += 1
+# for i in range(1, len(arr)):
+#     if arr[i] != arr[k-1]:
+#         arr[k] = arr[i]
+#         k += 1
 
-print(k)
-for i in range(k):
-    print(arr[i], end=" ")
+# print(k)
+# for i in range(k):
+#     print(arr[i], end=" ")
+
+# +++++++++++++++++++++++++++++++++++++++
 
 
-
-
-# Q-4  Remove Element
+# Q-4 -: Remove Element
 
 # Without using built-in keyword
 # n = int(input())
@@ -226,3 +226,73 @@ for i in range(k):
 
 # for i in range(left):
 #     print(arr[left], end=" ")
+
+
+# ++++++++++++++++++++
+
+# Q-5 -: Reverse Integer
+# Without using built-in keyword.
+
+# x = int(input())
+
+# sign = 1
+# if x < 0:
+#     sign = -1
+#     x = -x
+
+
+# reverse = 0
+
+# while x != 0:
+#     digit = x % 10
+#     x = x // 10
+
+#     if reverse > 214748364:
+#         print(0)
+#         break
+#     if reverse == 214748364 and digit > 7:
+#         print(0)
+#         break
+
+#     reverse = reverse * 10 + digit
+# else:
+#     reverse = reverse * sign
+#     if reverse < -214748364 and reverse > 214748364:
+#         print(0)
+#     else:
+#         print(reverse)
+
+
+# Using built-in keyword
+
+# x = int(input())
+
+# if x < 0:
+#     result = -int(str(-x)[::-1])
+# else:
+#     result = int(str(x)[::-1])
+
+# if result < -2147483648 or result > 2147483647:
+#     print(0)
+# else:
+#     print(result)
+
+
+# Optimized version
+x = int(input())
+
+sign = -1 if x < 0 else 1
+x = abs(x)
+
+reverse = 0
+
+while x > 0:
+    digit = x % 10
+    x = x // 10
+
+    if reverse > (2**31 - 1 - digit) // 10:
+        print(0)
+
+    reverse = reverse * 10 + digit
+
+print(sign * reverse)
