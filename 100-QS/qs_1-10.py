@@ -279,20 +279,55 @@
 
 
 # Optimized version
-x = int(input())
+# x = int(input())
 
-sign = -1 if x < 0 else 1
-x = abs(x)
+# sign = -1 if x < 0 else 1
+# x = abs(x)
 
-reverse = 0
+# reverse = 0
 
-while x > 0:
-    digit = x % 10
-    x = x // 10
+# while x > 0:
+#     digit = x % 10
+#     x = x // 10
 
-    if reverse > (2**31 - 1 - digit) // 10:
-        print(0)
+#     if reverse > (2**31 - 1 - digit) // 10:
+#         print(0)
 
-    reverse = reverse * 10 + digit
+#     reverse = reverse * 10 + digit
 
-print(sign * reverse)
+# print(sign * reverse)
+
+# +++++++++++++++++++++++++++++++++
+
+# Q-6 -: Find the Index of the First Occurrence in a String
+# Without using built-in keyword
+
+# hystack = input()
+# needle = input()
+
+# n = len(hystack)
+# m = len(needle)
+
+# index = -1
+
+# for i in range(n - m + 1):
+#     found = True
+
+#     for j in range(m):
+#         if hystack[i + j] != needle[j]:
+#             found = False
+#             break
+
+#     if found:
+#         index = i
+#         break
+
+# print(index)
+
+
+# Using built-in keyword
+# hystack = input()
+# needle = input()
+
+# index = hystack.find(needle)
+# print(index)
