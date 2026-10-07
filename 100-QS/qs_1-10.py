@@ -331,3 +331,73 @@
 
 # index = hystack.find(needle)
 # print(index)
+
+
+# ++++++++++++++++++++++++++++++++++++
+
+# Q - 7 -: Find First and Last Position of Element in Sorted Array
+# Without using built-in keyword
+
+# n = int(input())
+
+# arr = []
+# for i in range(n):
+#     arr.append(int(input()))
+
+# target = int(input())
+
+# # For first occurrence
+# left = 0
+# right = n - 1
+# first = -1
+
+# while left <= right:
+
+#     mid = (left + right) // 2
+
+#     if arr[mid] == target:
+#         first = mid
+#         right = mid - 1
+#     elif arr[mid] < target:
+#         left = mid + 1
+#     else:
+#         left = mid - 1
+
+# # For last occurrence
+# left = 0
+# right = n - 1
+# last = -1
+
+# while left <= right:
+
+#     mid = (left + right) // 2
+
+#     if arr[mid] == target:
+#         last = mid
+#         left = mid + 1
+#     elif arr[mid] < target:
+#         left = mid + 1
+#     else:
+#         right = mid - 1
+
+# print(first, last)
+
+# Using built-in keyword
+# from bisect import bisect_left, bisect_right
+
+# n = int(input())
+
+# arr = []
+# for i in range(n):
+#     arr.append(int(input()))
+
+# target = int(input())
+
+# left = bisect_left(arr, target)
+# right = bisect_right(arr, target) - 1
+
+# if left == n or arr[left] != target:
+#     print(-1, -1)
+# else:
+#     print(left, right)
+
