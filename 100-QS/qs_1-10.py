@@ -401,3 +401,81 @@
 # else:
 #     print(left, right)
 
+# ++++++++++++++++++++++++++++++++++++++++++
+
+# Q-8 -: Longest Substring Without Repeating Characters
+# Without using built-in keyword
+
+# s = input()
+
+# max_length = 0
+
+# for i in range(len(s)):
+
+#     current_len = 0
+
+#     for j in range(i, len(s)):
+
+#         duplicate = False
+
+#         for k in range(i, j):
+#             if s[k] == s[j]:
+#                 duplicate = True
+#                 break
+
+#         if duplicate:
+#             break
+
+#         current_len += 1
+
+#     if current_len > max_length:
+#         max_length = current_len
+
+# print(max_length)
+
+
+# Using built-in keyword
+# s = input()
+
+# seen = set()
+
+# left = 0
+# max_length = 0
+
+# for right in range(len(s)):
+
+#     while s[right] in seen:
+#         seen.remove(s[left])
+#         left += 1
+
+#     seen.add(s[right])
+
+#     curr_len = right - left + 1
+
+#     if curr_len > max_length:
+#         max_length = curr_len
+
+# print(max_length)
+
+
+# Optimized for leetcode
+s = input()
+
+last = [-1] * 128
+left = 0
+max_length = 0
+
+for right, char in enumerate(s):
+    index = ord(char)
+
+    if last[index] >= left:
+        left = last[index] + 1
+
+    last[index] = right
+
+    length = right - left + 1
+
+    if length > max_length:
+        max_length = length
+
+print(max_length)
