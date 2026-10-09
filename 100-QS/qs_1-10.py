@@ -459,23 +459,49 @@
 
 
 # Optimized for leetcode
-s = input()
+# s = input()
 
-last = [-1] * 128
-left = 0
-max_length = 0
+# last = [-1] * 128
+# left = 0
+# max_length = 0
 
-for right, char in enumerate(s):
-    index = ord(char)
+# for right, char in enumerate(s):
+#     index = ord(char)
 
-    if last[index] >= left:
-        left = last[index] + 1
+#     if last[index] >= left:
+#         left = last[index] + 1
 
-    last[index] = right
+#     last[index] = right
 
-    length = right - left + 1
+#     length = right - left + 1
 
-    if length > max_length:
-        max_length = length
+#     if length > max_length:
+#         max_length = length
 
-print(max_length)
+# print(max_length)
+
+# +++++++++++++++++++++++++++++++++++++
+# Q-9 -: Power of Two
+# Without using built-in keyword
+
+# n = int(input())
+
+# if n <= 0:
+#     print("False")
+# else:
+#     while n % 2 == 0:
+#         n = n // 2
+
+#     if n == 1:
+#         print("True")
+#     else:
+#         print("False")
+
+
+# Using built-in keyword
+# n = int(input())
+
+# if n > 0 and bin(n).count("1") == 1:
+#     print("True")
+# else:
+#     print("False")
