@@ -1,71 +1,82 @@
-# Q - 10 -: Roman to Integer
+# Q-11 -: Longest Common Prefix
+
 # Without using built-in keyword
+# n = int(input())
 
-# s = input().strip()
+# strs = []
+# for i in range(n):
+#     strs.append(input().strip())
 
-# total = 0
+# if n == 0:
+#     print("")
+# else:
+#     common_length = 0
 
-# for i in range(len(s)):
-#     if s[i] == "I":
-#         current = 1
-#     elif s[i] == "V":
-#         current = 5
-#     elif s[i] == "X":
-#         current = 10
-#     elif s[i] == 'L':
-#         current = 50
-#     elif s[i] == 'C':
-#         current = 100
-#     elif s[i] == 'D':
-#         current = 500
-#     else:
-#         current = 1000
+#     for i in range(len(strs[0])):
 
-#     if i + 1 < len(s):
-#         if s[i + 1] == "I":
-#             next_value = 1
-#         elif s[i + 1] == 'V':
-#             next_value = 5
-#         elif s[i + 1] == 'X':
-#             next_value = 10
-#         elif s[i + 1] == 'L':
-#             next_value = 50
-#         elif s[i + 1] == 'C':
-#             next_value = 100
-#         elif s[i + 1] == 'D':
-#             next_value = 500
-#         else:
-#             next_value = 1000
+#         curr_char = strs[0][i]
+#         matches = True
 
-#     else:
-#         next_value = 0
+#         for j in range(1, n):
 
-#     if current < next_value:
-#         total = total - current
-#     else:
-#         total = total + current
+#             if i >= len(strs[j]) or strs[j][i] != curr_char:
+#                 matches = False
+#                 break
 
-# print(total)
+#         if not matches:
+#             break
+
+#         common_length += 1
+
+#     print(strs[0][:common_length])
+
 
 # Using built-in keyword
-s = input().strip()
+# n = int(input())
 
-values = {
-    "I" : 1,
-    'V': 5,
-    'X': 10,
-    'L': 50,
-    'C': 100,
-    'D': 500,
-    'M': 1000
-}
+# strs = []
+# for i in range(n):
+#     strs.append(input().strip())
 
-total = 0
+# if n == 0:
+#     print("")
+# else:
 
-for i in range(len(s)):
-    if i + 1 < len(s) and values[s[i]] < values[s[i + 1]]:
-        total = total - values[s[i]]
-    else:
-        total = total + values[s[i]]
+#     strs.sort()
 
-print(total)
+#     first = strs[0]
+#     last = strs[n - 1]
+
+#     i = 0
+
+#     while i < len(first) and i < len(last) and first[i] == last[i]:
+#         i += 1
+
+#     print(first[:i])
+
+
+# Optimized code for LeetCode
+n = int(input())
+
+strs = []
+for i in range(n):
+    strs.append(input().strip())
+
+if n == 0:
+    print("")
+else:
+    prefix = strs[0]
+
+    for i in range(1, n):
+        word = strs[i]
+        j = 0
+
+        while j < len(prefix) and j < len(word) and prefix[j] == word[j]:
+            j += 1
+
+        prefix = prefix[:j]
+
+        if not prefix:
+            print("")
+
+    print(prefix)
