@@ -56,27 +56,113 @@
 
 
 # Optimized code for LeetCode
-n = int(input())
+# n = int(input())
 
-strs = []
-for i in range(n):
-    strs.append(input().strip())
+# strs = []
+# for i in range(n):
+#     strs.append(input().strip())
 
-if n == 0:
-    print("")
-else:
-    prefix = strs[0]
+# if n == 0:
+#     print("")
+# else:
+#     prefix = strs[0]
 
-    for i in range(1, n):
-        word = strs[i]
-        j = 0
+#     for i in range(1, n):
+#         word = strs[i]
+#         j = 0
 
-        while j < len(prefix) and j < len(word) and prefix[j] == word[j]:
-            j += 1
+#         while j < len(prefix) and j < len(word) and prefix[j] == word[j]:
+#             j += 1
 
-        prefix = prefix[:j]
+#         prefix = prefix[:j]
 
-        if not prefix:
-            print("")
+#         if not prefix:
+#             print("")
 
-    print(prefix)
+#     print(prefix)
+
+
+# ++++++++++++++++++++++++++++++++++++++++++++=
+
+# Q-12 -: Container With Most Water
+# Without using built-in keyword
+
+# n = int(input("Enter the number of heights: "))
+
+# height = list(map(int, input("Enter the heights: ").split()))
+
+# left = 0
+# right = n - 1
+# max_area = 0
+
+# while left < right:
+#     width = right - left
+
+#     if height[left] < height[right]:
+#         shorter_height = height[left]
+#     else:
+#         shorter_height = height[right]
+
+#     current_area = shorter_height * width
+
+#     if current_area > max_area:
+#         max_area = current_area
+
+#     if height[left] < height[right]:
+#         left += 1
+#     else:
+#         right -= 1
+
+# print(max_area)
+
+
+
+# Using built-in keyword
+# n = int(input("Enter the number of heights: "))
+
+# height = list(map(int, input("Enter the heights: ").split()))
+
+# left = 0
+# right = n - 1
+# max_area = 0
+
+# while left < right:
+
+#     width = right - left
+
+#     current_area = min(height[left], height[right]) * width
+
+#     max_area = max(max_area, current_area)
+
+#     if height[left] < height[right]:
+#         left += 1
+#     else:
+#         right -= 1
+
+# print(max_area)
+
+
+# Optimized code for leetcode
+
+n = int(input("Enter the number of heights: "))
+
+height = list(map(int, input("Enter the heights: ").split()))
+
+left = 0
+right = n - 1
+max_water = 0
+
+while left < right:
+    width = right - left
+
+    if height[left] < height[right]:
+        area = height[left] * width
+        left += 1
+    else:
+        area = height[right] * width
+        right -= 1
+
+    if area > max_water:
+        max_water = area
+
+print(max_water)
