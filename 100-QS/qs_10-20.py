@@ -144,25 +144,73 @@
 
 # Optimized code for leetcode
 
-n = int(input("Enter the number of heights: "))
+# n = int(input("Enter the number of heights: "))
 
-height = list(map(int, input("Enter the heights: ").split()))
+# height = list(map(int, input("Enter the heights: ").split()))
 
-left = 0
-right = n - 1
-max_water = 0
+# left = 0
+# right = n - 1
+# max_water = 0
 
-while left < right:
-    width = right - left
+# while left < right:
+#     width = right - left
 
-    if height[left] < height[right]:
-        area = height[left] * width
-        left += 1
-    else:
-        area = height[right] * width
-        right -= 1
+#     if height[left] < height[right]:
+#         area = height[left] * width
+#         left += 1
+#     else:
+#         area = height[right] * width
+#         right -= 1
 
-    if area > max_water:
-        max_water = area
+#     if area > max_water:
+#         max_water = area
 
-print(max_water)
+# print(max_water)
+
+
+# ++++++++++++++++++++++++++++++
+
+# Q-13 -: Length of Last Word
+# Without using built-in keyword
+
+# s = input()
+
+# i = len(s) - 1
+# length = 0
+
+# while i >= 0 and s[i] == " ":
+#     i -= 1
+
+# while i >= 0 and s[i] != " ":
+#     length += 1
+#     i -= 1
+
+# print(length) 
+
+
+# Using built-in keyword
+# s = input()
+
+# words = s.split()
+
+# if len(words) == 0:
+#     print(0)
+# else:
+#     print(len(words[-1]))
+
+
+# Optimized code for LeetCode
+s = input()
+
+i = len(s) - 1
+
+while s[i] == ' ':
+    i -= 1
+
+length = 0
+
+while i >= 0 and s[i] != ' ':
+    length += 1
+    i -= 1
+
+print(length)
