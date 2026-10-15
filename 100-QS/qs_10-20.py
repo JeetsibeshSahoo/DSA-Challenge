@@ -200,17 +200,121 @@
 
 
 # Optimized code for LeetCode
-s = input()
+# s = input()
 
-i = len(s) - 1
+# i = len(s) - 1
 
-while s[i] == ' ':
-    i -= 1
+# while s[i] == ' ':
+#     i -= 1
 
-length = 0
+# length = 0
 
-while i >= 0 and s[i] != ' ':
-    length += 1
-    i -= 1
+# while i >= 0 and s[i] != ' ':
+#     length += 1
+#     i -= 1
 
-print(length)
+# print(length)
+
+# +++++++++++++++++++++++++++++++++++++
+
+# Q-14 -: Longest Palindromic Substring
+# Without using built-in keyword
+
+# s = input("Enter the string: ")
+
+# n = len(s)
+# start = 0
+# max_len = 0
+
+# for i in range(n):
+
+#     left = i
+#     right = i
+
+#     while left >= 0 and right < n and s[left] == s[right]:
+
+#         curr_len = right - left + 1
+
+#         if curr_len > max_len:
+#             max_len = curr_len
+#             start = left
+
+#         left -= 1
+#         right += 1
+
+#     left = i
+#     right = i + 1
+
+#     while left >= 0 and right < n and s[left] == s[right]:
+    
+#         curr_len = right - left + 1
+    
+#         if curr_len > max_len:
+#             max_len = curr_len
+#             start = left
+    
+#         left -= 1
+#         right += 1
+
+# print(s[start:start + max_len])
+
+
+# Using built-in keyword
+# s = input("Enter the string: ")
+
+# n = len(s)
+# longest = ""
+
+# for length in range(n, 0, -1):
+
+#     found = False
+
+#     for start in range(n - length + 1):
+
+#         substring = s[start:start + length]
+
+#         if substring == substring[::-1]:
+#             longest = substring
+#             found = True
+#             break
+
+#         if found:
+#             break
+
+#     print(longest)
+
+# Optimized code for Leetcode
+s = input("Enter the string: ")
+
+
+start = 0
+max_len = 1
+
+for i in range(len(s)):
+    left = i
+    right = i
+
+    while left >= 0 and right < len(s) and s[left] == s[right]:
+        left -= 1
+        right += 1
+
+    length = right - left - 1
+
+    if length > max_len:
+        max_len = length
+        start = left + 1
+
+    left = i
+    right = i + 1
+
+    while left >= 0 and right < len(s) and s[left] == s[right]:
+        left -= 1
+        right += 1
+
+    length = right - left - 1
+
+    if length > max_len:
+        max_len = length
+        start = left + 1
+
+print(s[start:start + max_len])
