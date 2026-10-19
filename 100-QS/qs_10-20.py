@@ -284,37 +284,96 @@
 #     print(longest)
 
 # Optimized code for Leetcode
-s = input("Enter the string: ")
+# s = input("Enter the string: ")
 
 
-start = 0
-max_len = 1
+# start = 0
+# max_len = 1
 
-for i in range(len(s)):
-    left = i
-    right = i
+# for i in range(len(s)):
+#     left = i
+#     right = i
 
-    while left >= 0 and right < len(s) and s[left] == s[right]:
-        left -= 1
-        right += 1
+#     while left >= 0 and right < len(s) and s[left] == s[right]:
+#         left -= 1
+#         right += 1
 
-    length = right - left - 1
+#     length = right - left - 1
 
-    if length > max_len:
-        max_len = length
-        start = left + 1
+#     if length > max_len:
+#         max_len = length
+#         start = left + 1
 
-    left = i
-    right = i + 1
+#     left = i
+#     right = i + 1
 
-    while left >= 0 and right < len(s) and s[left] == s[right]:
-        left -= 1
-        right += 1
+#     while left >= 0 and right < len(s) and s[left] == s[right]:
+#         left -= 1
+#         right += 1
 
-    length = right - left - 1
+#     length = right - left - 1
 
-    if length > max_len:
-        max_len = length
-        start = left + 1
+#     if length > max_len:
+#         max_len = length
+#         start = left + 1
 
-print(s[start:start + max_len])
+# print(s[start:start + max_len])
+
+# +++++++++++++++++++++++++++++++++++++
+
+# Q-15 -: Search Insert Position
+# Without using built-in keyword
+# n = int(input("Enter the length of the array: "))
+
+# nums = list(map(int, input("Enter array elements: ").split()))
+
+# target = int(input("Enter the target: "))
+
+# left = 0
+# right = n
+
+# while left < right:
+
+#     mid = left + (right - left) // 2
+
+#     if nums[mid] < target:
+#         left = mid + 1
+#     else:
+#         right = mid
+
+# print(left)
+
+
+# Using built-in keyword
+# from bisect import bisect_left
+
+# n = int(input("Enter the length of the array: "))
+
+# nums = list(map(int, input("Enter array elements: ").split()))
+
+# target = int(input("Enter the target: "))
+
+# print(bisect_left(nums, target))
+
+
+
+# Optimized code for leetcode
+n = int(input("Enter the length of the array: "))
+
+nums = list(map(int, input("Enter array elements: ").split()))
+target = int(input("Enter the target: "))
+
+left = 0
+right = n - 1
+
+while left <= right:
+    mid = (left + right) // 2
+
+    if nums[mid] == target:
+        print(mid)
+        break
+
+    if nums[mid] < target:
+        left = mid + 1
+    else:
+        right = mid - 1
