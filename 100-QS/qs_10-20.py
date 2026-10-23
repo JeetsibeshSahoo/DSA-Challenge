@@ -358,607 +358,123 @@
 
 
 # Optimized code for leetcode
-n = int(input("Enter the length of the array: "))
+# n = int(input("Enter the length of the array: "))
 
-nums = list(map(int, input("Enter array elements: ").split()))
-target = int(input("Enter the target: "))
-
-left = 0
-right = n - 1
-
-while left <= right:
-    mid = (left + right) // 2
-
-    if nums[mid] == target:
-        print(mid)
-        break
-
-    if nums[mid] < target:
-        left = mid + 1
-    else:
-        right = mid - 1
-
-
-
-# ++++++++++ 383 +++++++++++++++++++++++++
-# Q-1 -: Two SUM (without built-in use)
-
-# n = int(input())
-
-# arr = []  # arr = [1,4,4,5,7]
-# for i in range(n):
-#     arr.append(int(input()))
-
-# target = int(input())
-
-# found = False
-
-# for i in range(n):
-#     for j in range(i+1, n):
-#         if arr[i] + arr[j] == target:
-#             print(i, j)
-#             found = True
-#             break
-
-#     if found:
-#         break
-
-
-
-# Two SUM (using built-in keyword)
-# n = int(input())
-
-# arr = []
-# for i in range(n):
-#     arr.append(int(input()))
-
-# target = int(input())
-
-# seen = {}
-
-# for i in range(n):
-#     required = target - arr[i]
-
-#     if required in seen:
-#         print(seen[required], i)
-#         break
-
-#     seen[arr[i]] = i
-
-# +++++++++++++++++++++++++++++++++++++++++++++
-
-# Q-2 -: Palindrome Number -: Given an integer x, return true if x is a palindrome, and false otherwise. (without built-in use)
-# x = int(input())
-
-# if x < 0:
-#     print("False")
-# else:
-#     original = x
-#     reversed = 0
-
-#     while x > 0:
-#         digit = x % 10
-#         reversed = reversed * 10 + digit
-#         x = x // 10
-
-#     if original == reversed:
-#         print("True")
-#     else:
-#         print("False")
-
-
-# Using Built-in keyword
-# x = int(input())
-
-# if x < 0:
-#     print("False")
-# else:
-#     s = str(x)
-#     if s == s[::-1]:
-#         print("True")
-#     else:
-#         print("False")
-
-
-# Leetcode Optimize one
-# x = int(input())
-
-# if x < 0:
-#     print("False")
-
-# if x % 10 == 0 and x != 0:
-#     print("False")
-
-# reversed_half = 0
-
-# while x > reversed_half:
-#     reversed_half = reversed_half * 10 + x % 10
-#     x //= 10
-# if x == reversed_half or x == reversed_half // 10:
-#     print("True")
-
-# ++++++++++++++++++++++++++++++++++++++++++++++
-
-# Q-3 -: Remove Duplicates from Sorted Array (Without using Built-in keyword)
-# n = int(input())
-
-# arr = []
-# for i in range(n):
-#     arr.append(int(input()))
-
-# if n == 0:
-#     print(0)
-# else :
-#     k = 1
-#     for i in range(1, n):
-#         if arr[i] != arr[k-1]:
-#             arr[k] = arr[i]
-#             k += 1
-#     print(k)
-
-#     for i in range(k):
-#         print(arr[i], end=" ")
-
-# Using Built-in keyword
-# n = int(input())
-
-# arr = []
-# for i in range(n):
-#     arr.append(int(input()))
-
-# unique = []
-# for i in range(n):
-#     if i == 0 or arr[i] != arr[i-1]:
-#         unique.append(arr[i])
-
-# print(len(unique))
-
-# for i in range(len(unique)):
-#     print(unique[i], end=" ")
-
-
-# Leetcode optimized one
-# n = int(input())
-
-# arr = []
-# for i in range(n):
-#     arr.append(int(input()))
-
-# k = 1
-
-# for i in range(1, len(arr)):
-#     if arr[i] != arr[k-1]:
-#         arr[k] = arr[i]
-#         k += 1
-
-# print(k)
-# for i in range(k):
-#     print(arr[i], end=" ")
-
-# +++++++++++++++++++++++++++++++++++++++
-
-
-# Q-4 -: Remove Element
-
-# Without using built-in keyword
-# n = int(input())
-
-# arr = []
-# for i in range(n):
-#     arr.append(int(input()))
-
-# val = int(input())
-# k = 0
-
-# for i in range(n):
-#     if arr[i] != val:
-#         arr[k] = arr[i]
-#         k += 1
-
-# print(k)
-
-# for i in range(k):
-#     print(arr[i], end=" ")
-
-
-
-
-# Using built-in keyword
-# n = int(input())
-
-# arr = []
-# for i in range(n):
-#     arr.append(int(input()))
-
-# val = int(input())
-# k = 0
-
-# while k < len(arr):
-#     if arr[k] == val:
-#         arr.pop(k)
-#     else:
-#         k += 1
-
-# print(k)
-
-# for i in range(k):
-#     print(arr[i], end=" ")
-
-
-
-#  Leetcode optimized way
-# n = int(input())
-
-# arr = []
-# for i in range(n):
-#     arr.append(int(input()))
-
-# val = int(input())
+# nums = list(map(int, input("Enter array elements: ").split()))
+# target = int(input("Enter the target: "))
 
 # left = 0
 # right = n - 1
 
 # while left <= right:
-#     if arr[left] == val:
-#         arr[left] = arr[right]
-#         right -= 1
-#     else:
-#         left += 1
-
-# print(left)
-
-# for i in range(left):
-#     print(arr[left], end=" ")
-
-
-# ++++++++++++++++++++
-
-# Q-5 -: Reverse Integer
-# Without using built-in keyword.
-
-# x = int(input())
-
-# sign = 1
-# if x < 0:
-#     sign = -1
-#     x = -x
-
-
-# reverse = 0
-
-# while x != 0:
-#     digit = x % 10
-#     x = x // 10
-
-#     if reverse > 214748364:
-#         print(0)
-#         break
-#     if reverse == 214748364 and digit > 7:
-#         print(0)
-#         break
-
-#     reverse = reverse * 10 + digit
-# else:
-#     reverse = reverse * sign
-#     if reverse < -214748364 and reverse > 214748364:
-#         print(0)
-#     else:
-#         print(reverse)
-
-
-# Using built-in keyword
-
-# x = int(input())
-
-# if x < 0:
-#     result = -int(str(-x)[::-1])
-# else:
-#     result = int(str(x)[::-1])
-
-# if result < -2147483648 or result > 2147483647:
-#     print(0)
-# else:
-#     print(result)
-
-
-# Optimized version
-# x = int(input())
-
-# sign = -1 if x < 0 else 1
-# x = abs(x)
-
-# reverse = 0
-
-# while x > 0:
-#     digit = x % 10
-#     x = x // 10
-
-#     if reverse > (2**31 - 1 - digit) // 10:
-#         print(0)
-
-#     reverse = reverse * 10 + digit
-
-# print(sign * reverse)
-
-# +++++++++++++++++++++++++++++++++
-
-# Q-6 -: Find the Index of the First Occurrence in a String
-# Without using built-in keyword
-
-# hystack = input()
-# needle = input()
-
-# n = len(hystack)
-# m = len(needle)
-
-# index = -1
-
-# for i in range(n - m + 1):
-#     found = True
-
-#     for j in range(m):
-#         if hystack[i + j] != needle[j]:
-#             found = False
-#             break
-
-#     if found:
-#         index = i
-#         break
-
-# print(index)
-
-
-# Using built-in keyword
-# hystack = input()
-# needle = input()
-
-# index = hystack.find(needle)
-# print(index)
-
-
-# ++++++++++++++++++++++++++++++++++++
-
-# Q - 7 -: Find First and Last Position of Element in Sorted Array
-# Without using built-in keyword
-
-# n = int(input())
-
-# arr = []
-# for i in range(n):
-#     arr.append(int(input()))
-
-# target = int(input())
-
-# # For first occurrence
-# left = 0
-# right = n - 1
-# first = -1
-
-# while left <= right:
-
 #     mid = (left + right) // 2
 
-#     if arr[mid] == target:
-#         first = mid
-#         right = mid - 1
-#     elif arr[mid] < target:
-#         left = mid + 1
-#     else:
-#         left = mid - 1
+#     if nums[mid] == target:
+#         print(mid)
+#         break
 
-# # For last occurrence
-# left = 0
-# right = n - 1
-# last = -1
-
-# while left <= right:
-
-#     mid = (left + right) // 2
-
-#     if arr[mid] == target:
-#         last = mid
-#         left = mid + 1
-#     elif arr[mid] < target:
+#     if nums[mid] < target:
 #         left = mid + 1
 #     else:
 #         right = mid - 1
 
-# print(first, last)
 
-# Using built-in keyword
-# from bisect import bisect_left, bisect_right
+# Q-16 -: Integer to Roman
+# Without using built-in 
 
-# n = int(input())
+# num = int(input("Enter the integer: "))
 
-# arr = []
-# for i in range(n):
-#     arr.append(int(input()))
+# roman = ""
 
-# target = int(input())
 
-# left = bisect_left(arr, target)
-# right = bisect_right(arr, target) - 1
+# thousands = num // 1000
 
-# if left == n or arr[left] != target:
-#     print(-1, -1)
+# for i in range(thousands):
+#     roman = roman + "M"
+
+
+# hundreds = (num // 100) % 10
+
+# if hundreds == 9:
+#     roman = roman + "CM"
+# elif hundreds >= 5:
+#     roman = roman + "D"
+#     for i in range(hundreds - 5):
+#         roman = roman + "C"
+# elif hundreds == 4:
+#     roman = roman + "CD"
 # else:
-#     print(left, right)
-
-# ++++++++++++++++++++++++++++++++++++++++++
-
-# Q-8 -: Longest Substring Without Repeating Characters
-# Without using built-in keyword
-
-# s = input()
-
-# max_length = 0
-
-# for i in range(len(s)):
-
-#     current_len = 0
-
-#     for j in range(i, len(s)):
-
-#         duplicate = False
-
-#         for k in range(i, j):
-#             if s[k] == s[j]:
-#                 duplicate = True
-#                 break
-
-#         if duplicate:
-#             break
-
-#         current_len += 1
-
-#     if current_len > max_length:
-#         max_length = current_len
-
-# print(max_length)
+#     for i in range(hundreds):
+#         roman = roman + "C"
 
 
-# Using built-in keyword
-# s = input()
+# tens = (num // 10) % 10
 
-# seen = set()
-
-# left = 0
-# max_length = 0
-
-# for right in range(len(s)):
-
-#     while s[right] in seen:
-#         seen.remove(s[left])
-#         left += 1
-
-#     seen.add(s[right])
-
-#     curr_len = right - left + 1
-
-#     if curr_len > max_length:
-#         max_length = curr_len
-
-# print(max_length)
-
-
-# Optimized for leetcode
-# s = input()
-
-# last = [-1] * 128
-# left = 0
-# max_length = 0
-
-# for right, char in enumerate(s):
-#     index = ord(char)
-
-#     if last[index] >= left:
-#         left = last[index] + 1
-
-#     last[index] = right
-
-#     length = right - left + 1
-
-#     if length > max_length:
-#         max_length = length
-
-# print(max_length)
-
-# +++++++++++++++++++++++++++++++++++++
-# Q-9 -: Power of Two
-# Without using built-in keyword
-
-# n = int(input())
-
-# if n <= 0:
-#     print("False")
+# if tens == 9:
+#     roman = roman + "XC"
+# elif tens >= 5:
+#     roman = roman + "L"
+#     for i in range(tens - 5):
+#         roman = roman + "X"
+# elif tens == 4:
+#     roman = roman + "XL"
 # else:
-#     while n % 2 == 0:
-#         n = n // 2
-
-#     if n == 1:
-#         print("True")
-#     else:
-#         print("False")
+#     for i in range(tens):
+#         roman = roman + "X"
 
 
-# Using built-in keyword
-# n = int(input())
+# ones = num % 10
 
-# if n > 0 and bin(n).count("1") == 1:
-#     print("True")
+# if ones == 9:
+#     roman = roman + "IX"
+# elif ones >= 5:
+#     roman = roman + "V"
+#     for i in range(ones - 5):
+#         roman = roman + "I"
+# elif ones == 4:
+#     roman = roman + "IV"
 # else:
-#     print("False")
+#     for i in range(ones):
+#         roman = roman + "I"
 
-# +++++++++++++++++++++++++++++++++++++++++++
+# print(roman)
 
-# Q - 10 -: Roman to Integer
-# Without using built-in keyword
-
-# s = input().strip()
-
-# total = 0
-
-# for i in range(len(s)):
-#     if s[i] == "I":
-#         current = 1
-#     elif s[i] == "V":
-#         current = 5
-#     elif s[i] == "X":
-#         current = 10
-#     elif s[i] == 'L':
-#         current = 50
-#     elif s[i] == 'C':
-#         current = 100
-#     elif s[i] == 'D':
-#         current = 500
-#     else:
-#         current = 1000
-
-#     if i + 1 < len(s):
-#         if s[i + 1] == "I":
-#             next_value = 1
-#         elif s[i + 1] == 'V':
-#             next_value = 5
-#         elif s[i + 1] == 'X':
-#             next_value = 10
-#         elif s[i + 1] == 'L':
-#             next_value = 50
-#         elif s[i + 1] == 'C':
-#             next_value = 100
-#         elif s[i + 1] == 'D':
-#             next_value = 500
-#         else:
-#             next_value = 1000
-
-#     else:
-#         next_value = 0
-
-#     if current < next_value:
-#         total = total - current
-#     else:
-#         total = total + current
-
-# print(total)
 
 # Using built-in keyword
-s = input().strip()
+# num = int(input("Enter the integer: "))
 
-values = {
-    "I" : 1,
-    'V': 5,
-    'X': 10,
-    'L': 50,
-    'C': 100,
-    'D': 500,
-    'M': 1000
-}
+# values = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
+# symbols = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"]
 
-total = 0
+# roman = ""
 
-for i in range(len(s)):
-    if i + 1 < len(s) and values[s[i]] < values[s[i + 1]]:
-        total = total - values[s[i]]
-    else:
-        total = total + values[s[i]]
+# for i in range(len(values)):
+#     while num >= values[i]:
+#         roman = roman + symbols[i]
+#         num = num - values[i]
 
-print(total)
+# print(roman)
+
+# Optimized code for leetcode
+num = int(input("Enter the integer: "))
+
+values = [
+    1000, 900, 500, 400,
+    100, 90, 50, 40,
+    10, 9, 5, 4, 1
+]
+
+symbols = [
+    "M", "CM", "D", "CD",
+    "C", "XC", "L", "XL",
+    "X", "IX", "V", "IV", "I"
+]
+
+result = []
+
+for i in range(len(values)):
+    while num >= values[i]:
+        result.append(symbols[i])
+        num -= values[i]
+
+print("".join(result))
