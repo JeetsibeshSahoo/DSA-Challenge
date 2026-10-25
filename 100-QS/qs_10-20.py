@@ -456,25 +456,92 @@
 # print(roman)
 
 # Optimized code for leetcode
-num = int(input("Enter the integer: "))
+# num = int(input("Enter the integer: "))
 
-values = [
-    1000, 900, 500, 400,
-    100, 90, 50, 40,
-    10, 9, 5, 4, 1
-]
+# values = [
+#     1000, 900, 500, 400,
+#     100, 90, 50, 40,
+#     10, 9, 5, 4, 1
+# ]
 
-symbols = [
-    "M", "CM", "D", "CD",
-    "C", "XC", "L", "XL",
-    "X", "IX", "V", "IV", "I"
-]
+# symbols = [
+#     "M", "CM", "D", "CD",
+#     "C", "XC", "L", "XL",
+#     "X", "IX", "V", "IV", "I"
+# ]
 
-result = []
+# result = []
 
-for i in range(len(values)):
-    while num >= values[i]:
-        result.append(symbols[i])
-        num -= values[i]
+# for i in range(len(values)):
+#     while num >= values[i]:
+#         result.append(symbols[i])
+#         num -= values[i]
 
-print("".join(result))
+# print("".join(result))
+
+# +++++++++++++++++++++++++++++++++++++++++
+
+# Q-17 -: Multiply Strings
+# Without using built-in keyword
+# num1 = input("Enter the first number: ").strip()
+# num2 = input("Enter the second number: ").strip()
+
+# if num1 == "0" or num2 == "0":
+#     print("0")
+# else:
+#     m = len(num1)
+#     n = len(num2)
+
+#     result = [0] * (m + n)
+
+#     for i in range(m - 1, -1, -1):
+#         for j in range(n - 1, -1, -1):
+#             digit1 = ord(num1[i]) - ord("0")
+#             digit2 = ord(num2[j]) - ord("0")
+
+#             product = digit1 * digit2
+
+#             p1 = i + j
+#             p2 = i + j + 1
+
+#             total = product + result[p2]
+
+#             result[p2] = total % 10
+#             result[p1] = result[p1] + total // 10
+
+#     start = 0
+
+#     while start < len(result) and result[start] == 0:
+#         start += 1
+
+#     answer = []
+
+#     for i in range(start, len(result)):
+#         answer.append(chr(result[i] + ord("0")))
+
+#     print("".join(answer))
+
+
+# Optimized code for Leetcode
+num1 = input("Enter the first number: ").strip()
+num2 = input("Enter the second number: ").strip()
+
+if num1 == "0" or num2 == "0":
+    print("0")
+
+m, n = len(num1), len(num2)
+result = [0] * (m + n)
+
+for i in range(m - 1, -1, -1):
+    a = ord(num1[i]) - 48
+
+    for j in range(n - 1, -1, -1):
+        result[i + j + 1] += a * (ord(num2[j]) - 48)
+
+for i in range(m + n - 1, 0, -1):
+    result[i - 1] += result[i] // 10
+    result[i] %= 10
+
+start = 1 if result[0] == 0 else 0
+
+print("".join(map(str, result[start:])))
