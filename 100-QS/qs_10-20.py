@@ -523,25 +523,62 @@
 
 
 # Optimized code for Leetcode
-num1 = input("Enter the first number: ").strip()
-num2 = input("Enter the second number: ").strip()
+# num1 = input("Enter the first number: ").strip()
+# num2 = input("Enter the second number: ").strip()
 
-if num1 == "0" or num2 == "0":
-    print("0")
+# if num1 == "0" or num2 == "0":
+#     print("0")
 
-m, n = len(num1), len(num2)
-result = [0] * (m + n)
+# m, n = len(num1), len(num2)
+# result = [0] * (m + n)
 
-for i in range(m - 1, -1, -1):
-    a = ord(num1[i]) - 48
+# for i in range(m - 1, -1, -1):
+#     a = ord(num1[i]) - 48
 
-    for j in range(n - 1, -1, -1):
-        result[i + j + 1] += a * (ord(num2[j]) - 48)
+#     for j in range(n - 1, -1, -1):
+#         result[i + j + 1] += a * (ord(num2[j]) - 48)
 
-for i in range(m + n - 1, 0, -1):
-    result[i - 1] += result[i] // 10
-    result[i] %= 10
+# for i in range(m + n - 1, 0, -1):
+#     result[i - 1] += result[i] // 10
+#     result[i] %= 10
 
-start = 1 if result[0] == 0 else 0
+# start = 1 if result[0] == 0 else 0
 
-print("".join(map(str, result[start:])))
+# print("".join(map(str, result[start:])))
+
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++
+
+# Q-18 -: Plus One
+# Without using built-in keyword
+# n = int(input("Enter the length of number: "))
+
+# digits = list(map(int, input("Enter the number: ").split()))
+
+# carry = 1
+
+# for i in range(n - 1, -1, -1):
+#     if digits[i] == 9:
+#         digits[i] = 0
+#     else:
+#         digits[i] = digits[i] + 1
+#         carry = 0
+#         break
+
+# if carry == 1:
+#     digits.insert(0, 1)
+
+# print(*digits)
+
+
+# Using built-in keyword
+n = int(input("Enter the length of number: "))
+
+digits = list(map(int, input("Enter the number: ").split()))
+
+number = int("".join(map(str, digits)))
+number = number + 1
+
+result = list(map(int, str(number)))
+
+print(*result)
