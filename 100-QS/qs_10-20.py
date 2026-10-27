@@ -572,13 +572,102 @@
 
 
 # Using built-in keyword
-n = int(input("Enter the length of number: "))
+# n = int(input("Enter the length of number: "))
 
-digits = list(map(int, input("Enter the number: ").split()))
+# digits = list(map(int, input("Enter the number: ").split()))
 
-number = int("".join(map(str, digits)))
-number = number + 1
+# number = int("".join(map(str, digits)))
+# number = number + 1
 
-result = list(map(int, str(number)))
+# result = list(map(int, str(number)))
 
-print(*result)
+# print(*result)
+
+# +++++++++++++++++++++++++++++++++++++++
+
+# Q-19 -: Valid Parentheses
+# Without using built-in keyword
+# s = input("Enter the Brackets: ").strip()
+
+# stack = []
+# valid = True
+
+# for ch in s:
+
+#     if ch == "(" or ch == "{" or ch == "[":
+#         stack.append(ch)
+
+#     else:
+#         if len(stack) == 0:
+#             valid = False
+#             break
+
+#         top = stack[-1]
+
+#         if ch == ")" and top != "(":
+#             valid = False
+#             break
+#         elif ch == "}" and top != "{":
+#             valid = False
+#             break
+#         elif ch == "]" and top != "[":
+#             valid = False
+#             break
+
+#         stack.pop()
+
+# if len(stack) != 0:
+#     valid = False
+# if valid:
+#     print("True")
+# else:
+#     print("False")
+
+
+# Using built-in keyword
+# s = input("Enter the Brackets: ").strip()
+
+# pairs = {
+#     ')': '(',
+#     '}': '{',
+#     ']': '['
+# }
+
+# stack = []
+# valid = True
+
+# for ch in s:
+#     if ch in pairs:
+#         if len(stack) == 0 or stack[-1] != pairs[ch]:
+#             valid = False
+#             break
+#         stack.pop()
+#     else:
+#         stack.append(ch)
+
+# if len(stack) != 0:
+#     valid = False
+
+# if valid:
+#     print("True")
+# else:
+#     print("False")
+
+
+# Optimized code for Leetcode
+s = input("Enter the brackets: ").strip()
+
+stack = []
+
+pairs = {
+    ')': '(',
+    ']': '[',
+    '}': '{'
+}
+
+for char in s:
+    if char in pairs:
+        if not stack or stack.pop() != pairs[char]:
+            print("False")
+    else:
+        stack.append(char)
