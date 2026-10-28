@@ -655,19 +655,171 @@
 
 
 # Optimized code for Leetcode
-s = input("Enter the brackets: ").strip()
+# s = input("Enter the brackets: ").strip()
 
-stack = []
+# stack = []
 
-pairs = {
-    ')': '(',
-    ']': '[',
-    '}': '{'
-}
+# pairs = {
+#     ')': '(',
+#     ']': '[',
+#     '}': '{'
+# }
 
-for char in s:
-    if char in pairs:
-        if not stack or stack.pop() != pairs[char]:
-            print("False")
-    else:
-        stack.append(char)
+# for char in s:
+#     if char in pairs:
+#         if not stack or stack.pop() != pairs[char]:
+#             print("False")
+#     else:
+#         stack.append(char)
+
+
+# ++++++++++++++++++++++++++++++++++++++++++
+
+# Q-20 -: String to Integer(atoi)
+# Without using built-in keyword
+
+# def my_atoi(s):
+
+#     i = 0
+#     n = len(s)
+
+#     while i < n and s[i] == " ":
+#         i += 1
+
+#     sign = 1
+
+#     if i < n and s[i] == "-":
+#         sign = -1
+#         i += 1
+#     elif i < n and s[i] == "+":
+#         i += 1
+
+#     result = 0
+
+#     while i < n:
+#         ch = s[i]
+
+#         if ch == '0':
+#             digit = 0
+#         elif ch == '1':
+#             digit = 1
+#         elif ch == '2':
+#             digit = 2
+#         elif ch == '3':
+#             digit = 3
+#         elif ch == '4':
+#             digit = 4
+#         elif ch == '5':
+#             digit = 5
+#         elif ch == '6':
+#             digit = 6
+#         elif ch == '7':
+#             digit = 7
+#         elif ch == '8':
+#             digit = 8
+#         elif ch == '9':
+#             digit = 9
+#         else:
+#             break
+
+#         if sign == 1:
+#             if result > 214748364 or (result == 214748364 and digit > 7):
+#                 result = 2147483647
+#                 return result
+
+#             result = result * 10 + digit
+
+#         else:
+#             if result < -214748364 or (result == -214748364 and digit > 8):
+#                 result = -2147483648
+#                 return result
+            
+#             result = result * 10 - digit
+
+#         i += 1
+#     return result
+
+# print(my_atoi(input("Enter the string: ")))
+
+
+
+# Using built-in keyword
+# def my_atoi(s):
+
+#     i = 0
+#     n = len(s)
+
+#     while i < n and s[i] == " ":
+#         i += 1
+
+#     sign = 1
+
+#     if i < n and s[i] == "-":
+#         sign = -1
+#         i += 1
+#     elif i < n and s[i] == "+":
+#         i += 1
+
+#     result = 0
+
+#     while i < n and "0" <= s[i] <= "9":
+#         digit = ord(s[i]) - ord("0")
+
+#         if sign == 1:
+#             if result > 214748364 or (result == 214748364 and digit > 7):
+#                 result = 2147483647
+#                 return result
+
+#             result = result * 10 + digit
+
+#         else:
+#             if result < -214748364 or (result == -214748364 and digit > 8):
+#                 result = -2147483648
+#                 return result
+            
+#             result = result * 10 - digit
+
+#         i += 1
+#     return result
+
+# print(my_atoi(input("Enter the string: ")))
+
+
+# Optimized code for Leetcode
+def my_atoi(s: str):
+    n = len(s)
+    i = 0
+
+    while i < n and s[i] == ' ':
+        i += 1
+
+    if i == n:
+        return 0
+
+    sign = 1
+    if s[i] == '-':
+        sign = -1
+        i += 1
+    elif s[i] == '+':
+        i += 1
+
+    num = 0
+    limit = 214748364
+
+    while i < n:
+        c = s[i]
+
+        if c < '0' or c > '9':
+            break
+
+        digit = ord(c) - 48
+
+        if num > limit or (num == limit and digit > (7 if sign == 1 else 8)):
+            return 2147483647 if sign == 1 else -2147483648
+
+        num = num * 10 + digit
+        i += 1
+
+    return num if sign == 1 else -num
+
+print(my_atoi(input("Enter the string: ")))
