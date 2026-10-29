@@ -786,40 +786,43 @@
 
 
 # Optimized code for Leetcode
-def my_atoi(s: str):
-    n = len(s)
-    i = 0
+# def my_atoi(s: str):
+#     n = len(s)
+#     i = 0
 
-    while i < n and s[i] == ' ':
-        i += 1
+#     while i < n and s[i] == ' ':
+#         i += 1
 
-    if i == n:
-        return 0
+#     if i == n:
+#         return 0
 
-    sign = 1
-    if s[i] == '-':
-        sign = -1
-        i += 1
-    elif s[i] == '+':
-        i += 1
+#     sign = 1
+#     if s[i] == '-':
+#         sign = -1
+#         i += 1
+#     elif s[i] == '+':
+#         i += 1
 
-    num = 0
-    limit = 214748364
+#     num = 0
+#     limit = 214748364
 
-    while i < n:
-        c = s[i]
+#     while i < n:
+#         c = s[i]
 
-        if c < '0' or c > '9':
-            break
+#         if c < '0' or c > '9':
+#             break
 
-        digit = ord(c) - 48
+#         digit = ord(c) - 48
 
-        if num > limit or (num == limit and digit > (7 if sign == 1 else 8)):
-            return 2147483647 if sign == 1 else -2147483648
+#         if num > limit or (num == limit and digit > (7 if sign == 1 else 8)):
+#             return 2147483647 if sign == 1 else -2147483648
 
-        num = num * 10 + digit
-        i += 1
+#         num = num * 10 + digit
+#         i += 1
 
-    return num if sign == 1 else -num
+#     return num if sign == 1 else -num
 
-print(my_atoi(input("Enter the string: ")))
+# print(my_atoi(input("Enter the string: ")))
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++
+
