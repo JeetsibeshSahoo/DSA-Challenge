@@ -93,3 +93,100 @@
 # result = bin(total)[2:]
 
 # print(result)
+
+
+# ++++++++++++++++++++++++++++++++++++++++
+
+# Q-23 -: Letter Combinations of a Phone Number
+# Without using built-in keyword
+# digits = input("Enter digits: ").strip()
+
+# phone = {
+#     '2': 'abc',
+#     '3': 'def',
+#     '4': 'ghi',
+#     '5': 'jkl',
+#     '6': 'mno',
+#     '7': 'pqrs',
+#     '8': 'tuv',
+#     '9': 'wxyz'
+# }
+
+# result = []
+# current = []
+
+# def backtrack(index):
+
+#     if index == len(digits):
+#         result.append("".join(current))
+#         return
+
+#     letters = phone[digits[index]]
+
+#     for i in range(len(letters)):
+#         current.append(letters[i])
+#         backtrack(index + 1)
+#         current.pop()
+
+# if digits:
+#     backtrack(0)
+
+# for combination in result:
+#     print(combination)
+
+
+# Using built-in keyword
+# from itertools import product
+
+# digits = input("Enter digits: ").strip()
+
+# phone = {
+#     '2': 'abc',
+#     '3': 'def',
+#     '4': 'ghi',
+#     '5': 'jkl',
+#     '6': 'mno',
+#     '7': 'pqrs',
+#     '8': 'tuv',
+#     '9': 'wxyz'
+# }
+
+# if digits:
+#     letter_groups = []
+
+#     for digit in digits:
+#         letter_groups.append(phone[digit])
+
+#     combinations = product(*letter_groups)
+
+#     for combination in combinations:
+#         print("".join(combination))
+
+
+# Optimized code for Leetcode
+digits = input("Enter digits: ").strip()
+
+if not digits:
+    print("")
+
+mapping = (
+    "", "", "abc", "def", "ghi",
+    "jkl", "mno", "pqrs", "tuv", "wxyz"
+)
+
+result = []
+path = []
+n = len(digits)
+
+def backtrack(index):
+    if index == n:
+        result.append("".join(path))
+        return
+
+    for char in mapping[ord(digits[index]) - 48]:
+        path.append(char)
+        backtrack(index + 1)
+        path.pop()
+
+backtrack(0)
+print(result)
