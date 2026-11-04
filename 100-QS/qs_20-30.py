@@ -164,29 +164,99 @@
 
 
 # Optimized code for Leetcode
-digits = input("Enter digits: ").strip()
+# digits = input("Enter digits: ").strip()
 
-if not digits:
-    print("")
+# if not digits:
+#     print("")
 
-mapping = (
-    "", "", "abc", "def", "ghi",
-    "jkl", "mno", "pqrs", "tuv", "wxyz"
-)
+# mapping = (
+#     "", "", "abc", "def", "ghi",
+#     "jkl", "mno", "pqrs", "tuv", "wxyz"
+# )
 
-result = []
-path = []
-n = len(digits)
+# result = []
+# path = []
+# n = len(digits)
 
-def backtrack(index):
-    if index == n:
-        result.append("".join(path))
-        return
+# def backtrack(index):
+#     if index == n:
+#         result.append("".join(path))
+#         return
 
-    for char in mapping[ord(digits[index]) - 48]:
-        path.append(char)
-        backtrack(index + 1)
-        path.pop()
+#     for char in mapping[ord(digits[index]) - 48]:
+#         path.append(char)
+#         backtrack(index + 1)
+#         path.pop()
 
-backtrack(0)
-print(result)
+# backtrack(0)
+# print(result)
+
+# ++++++++++++++++++++++++++++++++++++++++
+
+# Q-24 -: Rotate Image
+# Without using built-in keyword
+# def rotate(matrix):
+#     n = len(matrix)
+
+#     for i in range(n):
+#         for j in range(i + 1, n):
+#             temp = matrix[i][j]
+#             matrix[i][j] = matrix[j][i]
+#             matrix[j][i] = temp
+
+#     for i in range(n):
+#         left = 0
+#         right = n - 1
+
+#         while left < right:
+#             temp = matrix[i][left]
+#             matrix[i][left] = matrix[i][right]
+#             matrix[i][right] = temp
+
+#             left += 1
+#             right -= 1
+
+
+# n = int(input("Enter matrix size: "))
+
+# matrix = []
+
+# print("Enter matrix rows:")
+# for i in range(n):
+#     row = list(map(int, input().split()))
+#     matrix.append(row)
+
+# rotate(matrix)
+
+# print("Rotated matrix:")
+# for row in matrix:
+#     print(*row)
+
+
+# Using built-in keyword
+def rotate(matrix):
+    n = len(matrix)
+
+    for i in range(n):
+        for j in range(i + 1, n):
+            matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+
+    for row in matrix:
+        row.reverse()
+
+    return matrix
+
+n = int(input("Enter matrix size: "))
+
+matrix = []
+
+print("Enter matrix rows:")
+for i in range(n):
+    row = list(map(int, input().split()))
+    matrix.append(row)
+
+rotate(matrix)
+
+print("Rotated matrix:")
+for row in matrix:
+    print(*row)
