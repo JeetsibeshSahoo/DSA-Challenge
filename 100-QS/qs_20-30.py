@@ -234,29 +234,108 @@
 
 
 # Using built-in keyword
-def rotate(matrix):
-    n = len(matrix)
+# def rotate(matrix):
+#     n = len(matrix)
 
-    for i in range(n):
-        for j in range(i + 1, n):
-            matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+#     for i in range(n):
+#         for j in range(i + 1, n):
+#             matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
 
-    for row in matrix:
-        row.reverse()
+#     for row in matrix:
+#         row.reverse()
 
-    return matrix
+#     return matrix
 
-n = int(input("Enter matrix size: "))
+# n = int(input("Enter matrix size: "))
 
-matrix = []
+# matrix = []
 
-print("Enter matrix rows:")
-for i in range(n):
-    row = list(map(int, input().split()))
-    matrix.append(row)
+# print("Enter matrix rows:")
+# for i in range(n):
+#     row = list(map(int, input().split()))
+#     matrix.append(row)
 
-rotate(matrix)
+# rotate(matrix)
 
-print("Rotated matrix:")
-for row in matrix:
-    print(*row)
+# print("Rotated matrix:")
+# for row in matrix:
+#     print(*row)
+
+
+# +++++++++++++++++++++++++++++++++++++++++++
+# Q-25 -: Combination Sum
+# Without using built-in keyword
+# def combinationSum(candidates, target):
+
+#     result = []
+#     current = []
+
+#     candidates.sort()
+
+#     def findCombinations(index, total):
+
+#         if total == target:
+#             result.append(current.copy())
+#             return
+
+#         if total > target:
+#             return
+
+#         for i in range(index, len(candidates)):
+
+#             current.append(candidates[i])
+#             findCombinations(i, total + candidates[i])
+#             current.pop()
+
+#     findCombinations(0, 0)
+
+#     return result
+
+# n = int(input("Enter number of candidates: "))
+
+# candidates = list(map(int, input("Enter candidates: ").split()))
+
+# target = int(input("Enter target: "))
+
+# result = combinationSum(candidates, target)
+
+# print("Combinations: ")
+# print(result)
+
+
+# Using built-in keyword
+def combinationSum(candidates, target):
+    result = []
+
+    candidates.sort()
+
+    def backtrack(start, current, total):
+        if total == target:
+            result.append(current[:])
+            return
+
+        if total > target:
+            return
+
+        for i in range(start, len(candidates)):
+            current.append(candidates[i])
+
+            backtrack(i, current, total + candidates[i])
+
+            current.pop()
+
+    backtrack(0, [], 0)
+
+    return result
+
+
+n = int(input("Enter number of candidates: "))
+
+candidates = list(map(int, input("Enter candidates: ").split()))
+
+target = int(input("Enter target: "))
+
+result = combinationSum(candidates, target)
+
+print("Output:")
+print(result)
