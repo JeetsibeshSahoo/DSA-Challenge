@@ -304,30 +304,74 @@
 
 
 # Using built-in keyword
-def combinationSum(candidates, target):
+# def combinationSum(candidates, target):
+#     result = []
+
+#     candidates.sort()
+
+#     def backtrack(start, current, total):
+#         if total == target:
+#             result.append(current[:])
+#             return
+
+#         if total > target:
+#             return
+
+#         for i in range(start, len(candidates)):
+#             current.append(candidates[i])
+
+#             backtrack(i, current, total + candidates[i])
+
+#             current.pop()
+
+#     backtrack(0, [], 0)
+
+#     return result
+
+
+# n = int(input("Enter number of candidates: "))
+
+# candidates = list(map(int, input("Enter candidates: ").split()))
+
+# target = int(input("Enter target: "))
+
+# result = combinationSum(candidates, target)
+
+# print("Output:")
+# print(result)
+
+
+# ++++++++++++++++++++++++++++++++++++++++++++++++
+# Q-25 -: Combination Sum II
+def combinationSum2(candidates, target):
     result = []
+    current = []
 
     candidates.sort()
 
-    def backtrack(start, current, total):
+    def findCombinations(index, total):
+
         if total == target:
-            result.append(current[:])
+            result.append(current.copy())
             return
 
         if total > target:
             return
 
-        for i in range(start, len(candidates)):
+        for i in range(index, len(candidates)):
+
+            if i > index and candidates[i] == candidates[i - 1]:
+                continue
+
             current.append(candidates[i])
 
-            backtrack(i, current, total + candidates[i])
+            findCombinations(i + 1, total + candidates[i])
 
             current.pop()
 
-    backtrack(0, [], 0)
+    findCombinations(0, 0)
 
     return result
-
 
 n = int(input("Enter number of candidates: "))
 
@@ -335,7 +379,7 @@ candidates = list(map(int, input("Enter candidates: ").split()))
 
 target = int(input("Enter target: "))
 
-result = combinationSum(candidates, target)
+result = combinationSum2(candidates, target)
 
-print("Output:")
+print("Combinations: ")
 print(result)
