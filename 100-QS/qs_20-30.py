@@ -343,43 +343,125 @@
 
 # ++++++++++++++++++++++++++++++++++++++++++++++++
 # Q-25 -: Combination Sum II
-def combinationSum2(candidates, target):
-    result = []
-    current = []
+# def combinationSum2(candidates, target):
+#     result = []
+#     current = []
 
-    candidates.sort()
+#     candidates.sort()
 
-    def findCombinations(index, total):
+#     def findCombinations(index, total):
 
-        if total == target:
-            result.append(current.copy())
+#         if total == target:
+#             result.append(current.copy())
+#             return
+
+#         if total > target:
+#             return
+
+#         for i in range(index, len(candidates)):
+
+#             if i > index and candidates[i] == candidates[i - 1]:
+#                 continue
+
+#             current.append(candidates[i])
+
+#             findCombinations(i + 1, total + candidates[i])
+
+#             current.pop()
+
+#     findCombinations(0, 0)
+
+#     return result
+
+# n = int(input("Enter number of candidates: "))
+
+# candidates = list(map(int, input("Enter candidates: ").split()))
+
+# target = int(input("Enter target: "))
+
+# result = combinationSum2(candidates, target)
+
+# print("Combinations: ")
+# print(result)
+
+
+# ++++++++++++++++++++++++++++++++++++++++++++++++
+# Q-27 -: Permutations
+# Without using built-in keyword
+# def permute(nums):
+#     result = []
+#     current = []
+#     used = [False] * len(nums)
+
+#     def backtrack():
+
+#         if len(current) == len(nums):
+#             result.append(current.copy())
+#             return
+
+#         for i in range(len(nums)):
+
+#             if used[i]:
+#                 continue
+
+#             current.append(nums[i])
+#             used[i] = True
+
+#             backtrack()
+
+#             current.pop()
+#             used[i] = False
+
+#     backtrack()
+
+#     return result
+
+
+# n = int(input("Enter number of elements: "))
+# nums = list(map(int, input("Enter elements: ").split()))
+# result = permute(nums)
+
+# print("Permutations:")
+# print(result)
+
+
+# Using builtin keyword
+# from itertools import permutations
+
+# def permute(nums):
+#     result = []
+
+#     for p in permutations(nums):
+#         result.append(list(p))
+
+#     return result
+
+
+# nums = list(map(int, input("Enter elements: ").split()))
+# print(permute(nums))
+
+
+# Optimized code for Leetcode
+def permute(nums):
+    ans = []
+    n = len(nums)
+
+    def backtrack(i):
+        if i == n:
+            ans.append(nums[:])
             return
 
-        if total > target:
-            return
+        for j in range(i, n):
+            nums[i], nums[j] = nums[j], nums[i]
+            backtrack(i + 1)
+            nums[i], nums[j] = nums[j], nums[i]
 
-        for i in range(index, len(candidates)):
+    backtrack(0)
+    return ans
 
-            if i > index and candidates[i] == candidates[i - 1]:
-                continue
+n = int(input("Enter number of elements: "))
+nums = list(map(int, input("Enter elements: ").split()))
+result = permute(nums)
 
-            current.append(candidates[i])
-
-            findCombinations(i + 1, total + candidates[i])
-
-            current.pop()
-
-    findCombinations(0, 0)
-
-    return result
-
-n = int(input("Enter number of candidates: "))
-
-candidates = list(map(int, input("Enter candidates: ").split()))
-
-target = int(input("Enter target: "))
-
-result = combinationSum2(candidates, target)
-
-print("Combinations: ")
+print("Permutations:")
 print(result)
