@@ -564,3 +564,49 @@
 # result = findMedianSortedArrays(nums1, nums2)
 
 # print("Median:", result)
+
+
+# +++++++++++++++++++++++++++++++++++++++++++++
+# Q-29 -: Group Anagrams
+# Without using built-in keyword
+# def groupAnagrams(strs):
+
+#     groups = {}
+
+#     for word in strs:
+#         count = [0] * 26
+
+#         for char in word:
+#             index = ord(char) - ord('a')
+#             count[index] += 1
+
+#         key = tuple(count)
+
+#         if key not in groups:
+#             groups[key] = []
+
+#         groups[key].append(word)
+
+#     return list(groups.values())
+
+# strs = ["eat", "tea", "tan", "ate", "nat", "bat"]
+# print(groupAnagrams(strs))
+
+# Using built-in keyword
+def groupAnagrams(strs):
+    groups = {}
+
+    for word in strs:
+        key = ''.join(sorted(word))
+
+        if key not in groups:
+            groups[key] = []
+
+        groups[key].append(word)
+
+    return list(groups.values())
+
+
+strs = ["eat", "tea", "tan", "ate", "nat", "bat"]
+
+print(groupAnagrams(strs))
