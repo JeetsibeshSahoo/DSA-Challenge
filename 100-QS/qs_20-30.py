@@ -615,37 +615,52 @@
 # +++++++++++++++++++++++++++++++++++++++++++++
 # Q-30 -: Permutations II
 # Without using built-in keyword
+# def permuteUnique(nums):
+#     result = []
+#     current = []
+
+#     nums.sort()
+#     used = [False] * len(nums)
+
+#     def backtrack():
+#         if len(current) == len(nums):
+#             result.append(current.copy())
+#             return
+
+#         for i in range(len(nums)):
+#             if used[i]:
+#                 continue
+
+#             if i > 0 and nums[i] == nums[i - 1] and not used[i - 1]:
+#                 continue
+
+#             current.append(nums[i])
+#             used[i] = True
+
+#             backtrack()
+
+#             current.pop()
+#             used[i] = False
+
+#     backtrack()
+
+#     return result
+
+
+# n = int(input("Enter number of elements: "))
+# nums = list(map(int, input("Enter elements: ").split()))
+# result = permuteUnique(nums)
+
+# print("Unique Permutations:")
+# print(result)
+
+
+# Using built-in keyword
+from itertools import permutations
+
 def permuteUnique(nums):
-    result = []
-    current = []
-
-    nums.sort()
-    used = [False] * len(nums)
-
-    def backtrack():
-        if len(current) == len(nums):
-            result.append(current.copy())
-            return
-
-        for i in range(len(nums)):
-            if used[i]:
-                continue
-
-            if i > 0 and nums[i] == nums[i - 1] and not used[i - 1]:
-                continue
-
-            current.append(nums[i])
-            used[i] = True
-
-            backtrack()
-
-            current.pop()
-            used[i] = False
-
-    backtrack()
-
-    return result
-
+    result = set(permutations(nums))
+    return [list(p) for p in result]
 
 n = int(input("Enter number of elements: "))
 nums = list(map(int, input("Enter elements: ").split()))
