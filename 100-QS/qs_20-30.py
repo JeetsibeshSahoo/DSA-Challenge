@@ -593,20 +593,63 @@
 # print(groupAnagrams(strs))
 
 # Using built-in keyword
-def groupAnagrams(strs):
-    groups = {}
+# def groupAnagrams(strs):
+#     groups = {}
 
-    for word in strs:
-        key = ''.join(sorted(word))
+#     for word in strs:
+#         key = ''.join(sorted(word))
 
-        if key not in groups:
-            groups[key] = []
+#         if key not in groups:
+#             groups[key] = []
 
-        groups[key].append(word)
+#         groups[key].append(word)
 
-    return list(groups.values())
+#     return list(groups.values())
 
 
-strs = ["eat", "tea", "tan", "ate", "nat", "bat"]
+# strs = ["eat", "tea", "tan", "ate", "nat", "bat"]
 
-print(groupAnagrams(strs))
+# print(groupAnagrams(strs))
+
+
+# +++++++++++++++++++++++++++++++++++++++++++++
+# Q-30 -: Permutations II
+# Without using built-in keyword
+def permuteUnique(nums):
+    result = []
+    current = []
+
+    nums.sort()
+    used = [False] * len(nums)
+
+    def backtrack():
+        if len(current) == len(nums):
+            result.append(current.copy())
+            return
+
+        for i in range(len(nums)):
+            if used[i]:
+                continue
+
+            if i > 0 and nums[i] == nums[i - 1] and not used[i - 1]:
+                continue
+
+            current.append(nums[i])
+            used[i] = True
+
+            backtrack()
+
+            current.pop()
+            used[i] = False
+
+    backtrack()
+
+    return result
+
+
+n = int(input("Enter number of elements: "))
+nums = list(map(int, input("Enter elements: ").split()))
+result = permuteUnique(nums)
+
+print("Unique Permutations:")
+print(result)
