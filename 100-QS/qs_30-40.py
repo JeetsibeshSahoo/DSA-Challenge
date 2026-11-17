@@ -44,3 +44,40 @@ for i in range(rows):
 result = spiralOrder(matrix)
 
 print("Spiral order:", result)
+
+
+
+# Using built-in keyword
+def spiralOrder(matrix):
+    result = []
+
+    while matrix:
+        result += matrix.pop(0)
+
+        if matrix and matrix[0]:
+            for row in matrix:
+                result.append(row.pop())
+
+        if matrix:
+            result += matrix.pop()[::-1]
+
+        if matrix and matrix[0]:
+            for row in matrix[::-1]:
+                result.append(row.pop(0))
+
+    return result
+
+rows = int(input("Enter number of rows: "))
+cols = int(input("Enter number of columns: "))
+
+matrix = []
+
+print("Enter matrix elements row by row:")
+
+for i in range(rows):
+    row = list(map(int, input().split()))
+    matrix.append(row)
+
+result = spiralOrder(matrix)
+
+print("Spiral order:", result)
