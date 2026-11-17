@@ -656,15 +656,15 @@
 
 
 # Using built-in keyword
-from itertools import permutations
+# from itertools import permutations
 
-def permuteUnique(nums):
-    result = set(permutations(nums))
-    return [list(p) for p in result]
+# def permuteUnique(nums):
+#     result = set(permutations(nums))
+#     return [list(p) for p in result]
 
-n = int(input("Enter number of elements: "))
-nums = list(map(int, input("Enter elements: ").split()))
-result = permuteUnique(nums)
+# n = int(input("Enter number of elements: "))
+# nums = list(map(int, input("Enter elements: ").split()))
+# result = permuteUnique(nums)
 
-print("Unique Permutations:")
-print(result)
+# print("Unique Permutations:")
+# print(result)
