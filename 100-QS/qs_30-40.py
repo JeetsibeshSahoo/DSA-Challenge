@@ -86,7 +86,56 @@
 # +++++++++++++++++++++++++++++++++++++++++++++++
 # Q-32 -: Spiral Matrix II
 # Without using built-in keyword
+# def generateMatrix(n):
+#     matrix = [[0] * n for _ in range(n)]
+
+#     top = 0
+#     bottom = n - 1
+#     left = 0
+#     right = n - 1
+
+#     num = 1
+
+#     while top <= bottom and left <= right:
+
+#         for i in range(left, right + 1):
+#             matrix[left][i] = num
+#             num += 1
+#         top += 1
+
+#         for i in range(top, bottom + 1):
+#             matrix[i][right] = num
+#             num += 1
+#         right -= 1
+
+#         if top <= bottom:
+#             for i in range(right, left - 1, -1):
+#                 matrix[bottom][i] = num
+#                 num += 1
+#             bottom -= 1
+
+#         if left <= right:
+#             for i in range(bottom, top - 1, -1):
+#                 matrix[i][left] = num
+#                 num += 1
+#             left += 1
+
+#     return matrix
+
+# n = int(input("Enter the value of n: "))
+
+# result = generateMatrix(n)
+
+# print("Spiral Matrix: ")
+
+# for row in result:
+#     print(*row)
+
+
+
+# Another way
 def generateMatrix(n):
+    nums = list(range(1, n * n + 1))
     matrix = [[0] * n for _ in range(n)]
 
     top = 0
@@ -94,33 +143,28 @@ def generateMatrix(n):
     left = 0
     right = n - 1
 
-    num = 1
+    while nums:
 
-    while top <= bottom and left <= right:
-
-        for i in range(left, right + 1):
-            matrix[left][i] = num
-            num += 1
+        for j in range(left, right + 1):
+            matrix[top][j] = nums.pop(0)
         top += 1
 
         for i in range(top, bottom + 1):
-            matrix[i][right] = num
-            num += 1
+            matrix[i][right] = nums.pop(0)
         right -= 1
 
         if top <= bottom:
-            for i in range(right, left - 1, -1):
-                matrix[bottom][i] = num
-                num += 1
+            for j in range(right, left - 1, -1):
+                matrix[bottom][j] = nums.pop(0)
             bottom -= 1
 
         if left <= right:
             for i in range(bottom, top - 1, -1):
-                matrix[i][left] = num
-                num += 1
+                matrix[i][left] = nums.pop(0)
             left += 1
 
     return matrix
+
 
 n = int(input("Enter the value of n: "))
 
