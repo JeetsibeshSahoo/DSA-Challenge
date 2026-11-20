@@ -134,43 +134,94 @@
 
 
 # Another way
-def generateMatrix(n):
-    nums = list(range(1, n * n + 1))
-    matrix = [[0] * n for _ in range(n)]
+# def generateMatrix(n):
+#     nums = list(range(1, n * n + 1))
+#     matrix = [[0] * n for _ in range(n)]
 
-    top = 0
-    bottom = n - 1
-    left = 0
-    right = n - 1
+#     top = 0
+#     bottom = n - 1
+#     left = 0
+#     right = n - 1
 
-    while nums:
+#     while nums:
 
-        for j in range(left, right + 1):
-            matrix[top][j] = nums.pop(0)
-        top += 1
+#         for j in range(left, right + 1):
+#             matrix[top][j] = nums.pop(0)
+#         top += 1
 
-        for i in range(top, bottom + 1):
-            matrix[i][right] = nums.pop(0)
-        right -= 1
+#         for i in range(top, bottom + 1):
+#             matrix[i][right] = nums.pop(0)
+#         right -= 1
 
-        if top <= bottom:
-            for j in range(right, left - 1, -1):
-                matrix[bottom][j] = nums.pop(0)
-            bottom -= 1
+#         if top <= bottom:
+#             for j in range(right, left - 1, -1):
+#                 matrix[bottom][j] = nums.pop(0)
+#             bottom -= 1
 
-        if left <= right:
-            for i in range(bottom, top - 1, -1):
-                matrix[i][left] = nums.pop(0)
-            left += 1
+#         if left <= right:
+#             for i in range(bottom, top - 1, -1):
+#                 matrix[i][left] = nums.pop(0)
+#             left += 1
 
-    return matrix
+#     return matrix
 
 
-n = int(input("Enter the value of n: "))
+# n = int(input("Enter the value of n: "))
 
-result = generateMatrix(n)
+# result = generateMatrix(n)
 
-print("Spiral Matrix: ")
+# print("Spiral Matrix: ")
 
-for row in result:
-    print(*row)
+# for row in result:
+#     print(*row)
+
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++
+# Q-33 -: Regular Expression Matching
+# Without using built-in keyword
+# def isMatch(s, p):
+#     m = len(s) 
+#     n = len(p)
+
+#     dp = [[False] * (n + 1) for _ in range(m + 1)]
+
+#     dp[0][0] = True
+
+#     for j in range(2, n + 1):
+#         if p[j - 1] == '*':
+#             dp[0][j] = dp[0][j - 2]
+
+#     for i in range(1, m + 1):
+#         for j in range(1, n + 1):
+
+#             if p[j - 1] == "." or p[j - 1] == s[i - 1]:
+#                 dp[i][j] = dp[i - 1][j - 1]
+
+#             elif p[j - 1] == "*":
+#                 dp[i][j] = dp[i][j - 2]
+
+#                 if p[j - 2] == "." or p[j - 2] == s[i - 1]:
+#                     dp[i][j] = dp[i][j] or dp[i - 1][j]
+
+#     return dp[m][n]
+
+# s = input("Enter the strings: ")
+# p = input("Enter the pattern: ")
+
+# result = isMatch(s, p)
+
+# print(result)
+
+
+# Using built-in keyword
+import re
+
+def isMatch(s, p):
+    return re.fullmatch(p, s) is not None
+
+s = input("Enter the string: ")
+p = input("Enter the pattern: ")
+
+result = isMatch(s, p)
+
+print(result)
