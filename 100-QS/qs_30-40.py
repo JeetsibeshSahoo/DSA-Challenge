@@ -214,14 +214,46 @@
 
 
 # Using built-in keyword
-import re
+# import re
 
-def isMatch(s, p):
-    return re.fullmatch(p, s) is not None
+# def isMatch(s, p):
+#     return re.fullmatch(p, s) is not None
 
-s = input("Enter the string: ")
-p = input("Enter the pattern: ")
+# s = input("Enter the string: ")
+# p = input("Enter the pattern: ")
 
-result = isMatch(s, p)
+# result = isMatch(s, p)
+
+# print(result)
+
+
+# +++++++++++++++++++++++++++++++++++++++++++
+# Q-34 -: Sqrt(x)
+# Without using built-in keyword
+def mySqrt(x):
+
+    if x < 2:
+        return x
+
+    left = 1
+    right = x // 2
+    answer = 0
+
+    while left <= right:
+
+        mid = left + (right - left) // 2
+
+        if mid <= x // mid:
+            answer = mid
+            left = mid + 1
+
+        else:
+            right = mid - 1
+
+    return answer
+
+x = int(input("Enter the number: "))
+
+result = mySqrt(x)
 
 print(result)
