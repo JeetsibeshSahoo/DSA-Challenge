@@ -230,27 +230,40 @@
 # +++++++++++++++++++++++++++++++++++++++++++
 # Q-34 -: Sqrt(x)
 # Without using built-in keyword
+# def mySqrt(x):
+
+#     if x < 2:
+#         return x
+
+#     left = 1
+#     right = x // 2
+#     answer = 0
+
+#     while left <= right:
+
+#         mid = left + (right - left) // 2
+
+#         if mid <= x // mid:
+#             answer = mid
+#             left = mid + 1
+
+#         else:
+#             right = mid - 1
+
+#     return answer
+
+# x = int(input("Enter the number: "))
+
+# result = mySqrt(x)
+
+# print(result)
+
+
+# Using built-in keyword
+import math
+
 def mySqrt(x):
-
-    if x < 2:
-        return x
-
-    left = 1
-    right = x // 2
-    answer = 0
-
-    while left <= right:
-
-        mid = left + (right - left) // 2
-
-        if mid <= x // mid:
-            answer = mid
-            left = mid + 1
-
-        else:
-            right = mid - 1
-
-    return answer
+    return math.isqrt(x)
 
 x = int(input("Enter the number: "))
 
