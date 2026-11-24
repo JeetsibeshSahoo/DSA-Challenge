@@ -360,37 +360,74 @@
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Q-37 -: Edit Distance
 # Manual approach
-def minDistance(w1, w2):
+# def minDistance(w1, w2):
 
-    m = len(w1)
-    n = len(w2)
+#     m = len(w1)
+#     n = len(w2)
 
-    dp = [[0] * (n + 1) for _ in range(m + 1)]
+#     dp = [[0] * (n + 1) for _ in range(m + 1)]
 
-    for i in range(m + 1):
-        dp[i][0] = i
+#     for i in range(m + 1):
+#         dp[i][0] = i
 
-    for j in range(n + 1):
-        dp[0][j] = j
+#     for j in range(n + 1):
+#         dp[0][j] = j
 
-    for i in range(m + 1):
-        for j in range(n + 1):
+#     for i in range(m + 1):
+#         for j in range(n + 1):
 
-            if w1[i - 1] == w2[j - 1]:
-                dp[i][j] = dp[i - 1][j - 1]
+#             if w1[i - 1] == w2[j - 1]:
+#                 dp[i][j] = dp[i - 1][j - 1]
 
-            else:
-                insert = dp[i][j - 1]
-                delete = dp[i -1][j]
-                replace = dp[i - 1][j - 1]
+#             else:
+#                 insert = dp[i][j - 1]
+#                 delete = dp[i -1][j]
+#                 replace = dp[i - 1][j - 1]
 
-                dp[i][j] = 1 + min(insert, delete, replace)
+#                 dp[i][j] = 1 + min(insert, delete, replace)
 
-    return dp[m][n]
+#     return dp[m][n]
 
-word1 = input("Enter the first word: ")
-word2 = input("Enter the second word: ")
+# word1 = input("Enter the first word: ")
+# word2 = input("Enter the second word: ")
 
-result = minDistance(word1, word2)
+# result = minDistance(word1, word2)
 
-print(result)
+# print(result)
+
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++
+# Q-38 -: Sort Colors
+# Normal way
+def sortColors(nums):
+    count0 = 0
+    count1 = 0
+    count2 = 0
+
+    for num in nums:
+        if num == 0:
+            count0 += 1
+        elif num == 1:
+            count1 += 1
+        else:
+            count2 += 1
+
+    index = 0
+
+    for _ in range(count0):
+        nums[index] = 0
+        index += 1
+
+    for _ in range(count1):
+        nums[index] = 1
+        index += 1
+
+    for _ in range(count2):
+        nums[index] = 2
+        index += 1
+
+nums = list(map(int, input("Enter array elements: ").split()))
+
+sortColors(nums)
+
+print("Sorted array: ", *nums)
