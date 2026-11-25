@@ -495,4 +495,19 @@
 #     print(combination)
 
 
- 
+
+# Using built-in keyword
+from itertools import combinations
+
+def combine(n, k):
+    return [list(c) for c in combinations(range(1, n + 1), k)]
+
+n = int(input("Enter n: "))
+k = int(input("Enter k: "))
+
+result = combine(n, k)
+
+print("All possible combinations: ")
+
+for combination in result:
+    print(combination)
