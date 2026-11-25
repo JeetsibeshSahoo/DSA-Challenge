@@ -434,27 +434,65 @@
 
 
 # Using Dutch National Flag Algorithm
-def sortColors(nums):
-    low = 0
-    mid = 0
-    high = len(nums) - 1
+# def sortColors(nums):
+#     low = 0
+#     mid = 0
+#     high = len(nums) - 1
 
-    while mid <= high:
+#     while mid <= high:
 
-        if nums[mid] == 0:
-            nums[low], nums[mid] = nums[mid], nums[low]
-            low += 1
-            mid += 1
+#         if nums[mid] == 0:
+#             nums[low], nums[mid] = nums[mid], nums[low]
+#             low += 1
+#             mid += 1
 
-        elif nums[mid] == 1:
-            mid += 1
+#         elif nums[mid] == 1:
+#             mid += 1
 
-        else:
-            nums[mid], nums[high] = nums[high], nums[mid]
-            high -= 1
+#         else:
+#             nums[mid], nums[high] = nums[high], nums[mid]
+#             high -= 1
 
-nums = list(map(int, input("Enter array elements: ").split()))
+# nums = list(map(int, input("Enter array elements: ").split()))
 
-sortColors(nums)
+# sortColors(nums)
 
-print("Sorted array: ", *nums)
+# print("Sorted array: ", *nums)
+
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++
+# Q-39 -: Combinations
+# Without using built-in keyword
+# def combine(n, k):
+
+#     result = []
+#     current = []
+
+#     def backtrack(start):
+#         if len(current) == k:
+#             result.append(current.copy())
+#             return
+
+#         for i in range(start, n + 1):
+#             current.append(i)
+
+#             backtrack(i + 1)
+
+#             current.pop()
+
+#     backtrack(1)
+
+#     return result
+
+# n = int(input("Enter n: "))
+# k = int(input("Enter k: "))
+
+# result = combine(n, k)
+
+# print("All possible combinations: ")
+
+# for combination in result:
+#     print(combination)
+
+
+ 
